@@ -1,5 +1,5 @@
-# """Movie theatre ticketing system - v4
-# Calculate ticket price
+# """Movie theatre ticketing system - v5
+# Update totals
 # Created by James Mulholland"""
 
 
@@ -30,12 +30,12 @@ def get_price(type_):
 def sell_ticket():
     print("********** Panfare Movies - ticketing system **********\n")
 
-    adult_tickets = 0
-    student_tickets = 0
-    child_tickets = 0
-    gift_tickets = 0
-    tickets_sold = 0
-    total_sales = 0
+adult_ticket = 0
+student_tickets = 0
+child_ticket = 0
+gift_tickets = 0
+tickets_sold = 0
+total_sales = 0
 
 
 # component 2 - Get the category and number of tickets required
@@ -54,11 +54,25 @@ while ticket_wanted == "Y":
 
     if confirm_order(ticket_type, num_tickets, cost):
         print("Order confirmed")
+
+        # Component 5 - update totals
+        total_sales += cost
+        tickets_sold += num_tickets
+        if ticket_type == "A":
+            adult_ticket += num_tickets
+        elif ticket_type == "S":
+            student_tickets += num_tickets
+        elif ticket_type == "C":
+            child_ticket += num_tickets
+        else:
+            gift_tickets += num_tickets
     else:
         print("Order cancelled")
 
     ticket_wanted = input(" Do you want to sell another ticket? Y/N: "
                           "").upper()
+
+
 
 
 # Main routine
